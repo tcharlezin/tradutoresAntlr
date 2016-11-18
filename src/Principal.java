@@ -22,10 +22,10 @@ public class Principal
         HelloLexer lexer = new HelloLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         HelloParser parser = new HelloParser(tokens);
-        ParseTree tree = parser.compilationUnit(); // parse
+        ParseTree tree = parser.prog(); // parse
 
         ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
-        HelloBaseListener extractor = new GeradorCrud(parser);
+        HelloBaseListener extractor = new GeradorCrud();
         walker.walk(extractor, tree); // initiate walk of tree with listener
     }
 
