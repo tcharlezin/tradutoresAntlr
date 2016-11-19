@@ -28,9 +28,19 @@ public class GoLaravel
 		this.path = path;
 	}
 	
+	public String ObterPath()
+	{
+		return this.path;
+	}
+	
 	public void DefinirNome(String nome)
 	{
 		this.nome = nome;
+	}
+	
+	public String ObterNome() 
+	{
+		return this.nome;
 	}
 	
 	public void Executar()
