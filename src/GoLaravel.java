@@ -1,4 +1,3 @@
-import java.awt.Menu;
 import java.util.ArrayList;
 
 public class GoLaravel 
@@ -50,8 +49,8 @@ public class GoLaravel
 	
 	public void Executar()
 	{
-		// new MigrationMaker(this).GerarCodigo();
-		// new RotasMaker(this).GerarCodigo();
+		new MigrationMaker(this).GerarCodigo();
+		new RotasMaker(this).GerarCodigo();
 		new ControllerMaker(this).GerarCodigo();
 		new ModelMaker(this).GerarCodigo();
 		new ViewMaker(this).GerarCodigo();
