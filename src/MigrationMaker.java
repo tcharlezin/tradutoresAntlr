@@ -87,20 +87,12 @@ public class MigrationMaker
 	
 	private void RemoverArquivoMigration() 
 	{
-		File file = new File(this.ObterArquivoMigration());
-		System.out.println("Removendo arquivo... " + this.ObterArquivoMigration());
-		file.delete();
+		Utilitario.RemoverArquivo(this.ObterArquivoMigration());
 	}
 
 	private void CriarArquivoMigration(ArrayList<String> linhasArquivo) throws IOException 
 	{
-		FileWriter writer = new FileWriter(this.ObterArquivoMigration()); 
-		for(String str: linhasArquivo) 
-		{
-			writer.write(str +"\n");
-		}
-		writer.close();
-		System.out.println("Criado arquivo... " + this.ObterArquivoMigration());
+		Utilitario.CriarArquivo(linhasArquivo, this.ObterArquivoMigration());
 	}
 
 	private ArrayList<String> ObterLinhasArquivoMigration() throws IOException
