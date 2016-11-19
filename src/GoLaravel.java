@@ -43,10 +43,15 @@ public class GoLaravel
 		return this.nome;
 	}
 	
+	public String ObterNomeMinusculo() 
+	{
+		return this.nome.toLowerCase();
+	}
+	
 	public void Executar()
 	{
-		new MigrationMaker(this).GerarCodigo();
-		new RotasMaker(this).GerarCodigo();
+		// new MigrationMaker(this).GerarCodigo();
+		// new RotasMaker(this).GerarCodigo();
 		new ControllerMaker(this).GerarCodigo();
 		new ModelMaker(this).GerarCodigo();
 		new ViewMaker(this).GerarCodigo();
@@ -65,4 +70,5 @@ public class GoLaravel
 		
 		return listaRetorno;
 	}
+	
 }

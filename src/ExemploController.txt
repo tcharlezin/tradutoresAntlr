@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\%%MODEL%%;
+use Illuminate\Http\Request;
+
+class %%MODEL%%Controller extends Controller
+{
+    private $model;
+
+    public function __construct(%%MODEL%% $model)
+    {
+        $this->model = $model;
+    }
+
+    public function index()
+    {
+        $dados = $this->model->listAll();
+        return view('%%MODEL_MINUSCULO%%.index', compact('dados'));
+    }
+
+    public function create()
+    {
+        return view('%%MODEL_MINUSCULO%%.create');
+    }
+
+    public function store(Request $request)
+    {
+        $dados = $request->all();
+        $this->model->create($dados);
+        return redirect()->route('%%MODEL_MINUSCULO%%.index');
+    }
+
+    public function show($id)
+    {
+    }
+
+    public function edit($id)
+    {
+        $dado = $this->model->find($id);
+        return view('%%MODEL_MINUSCULO%%.edit', compact('dado'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $dadosRequest = $request->all();
+        $this->model->update($dadosRequest, $id);
+
+        $dados = $this->model->listAll();
+        return view('%%MODEL_MINUSCULO%%.index', compact('dados'));
+    }
+
+    public function destroy($id)
+    {
+    }
+}

@@ -1,4 +1,7 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,5 +22,30 @@ public class Utilitario
 			writer.write(str +"\n");
 		}
 		writer.close();
+	}
+	
+	public static ArrayList<String> ObterLinhasArquivo(String fullpath) throws IOException
+	{
+		ArrayList<String> lista = new ArrayList<String>();
+		
+		File file = new File(fullpath);
+		BufferedReader reader = new BufferedReader(new FileReader(file));;
+
+		try
+		{
+			reader = new BufferedReader(new FileReader(file));
+	    	String text = null;
+
+	    	while ((text = reader.readLine()) != null) 
+	    	{
+	    		lista.add(text);
+	    	}
+		}
+		finally
+		{
+			reader.close();
+		}
+		
+		return lista;
 	}
 }

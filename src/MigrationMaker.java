@@ -97,29 +97,8 @@ public class MigrationMaker
 
 	private ArrayList<String> ObterLinhasArquivoMigration() throws IOException
 	{
-		ArrayList<String> lista = new ArrayList<String>();
-		
-		File file = new File(this.ObterArquivoMigration());
-		BufferedReader reader = new BufferedReader(new FileReader(file));;
-
-		try
-		{
-			reader = new BufferedReader(new FileReader(file));
-	    	String text = null;
-
-	    	while ((text = reader.readLine()) != null) 
-	    	{
-	    		lista.add(text);
-	    	}
-		}
-		finally
-		{
-			reader.close();
-		}
-		
-		return lista;
+		return Utilitario.ObterLinhasArquivo(this.ObterArquivoMigration());
 	}
-	
 	
 	private String ObterArquivoMigration() 
 	{
