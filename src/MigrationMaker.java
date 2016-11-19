@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -5,6 +9,7 @@ public class MigrationMaker
 {
 	private GoLaravel gerador;
 	private String migration;
+	private static final int INICIO_CAMPOS = 17;
 	
 	public MigrationMaker(GoLaravel gerador) 
 	{
@@ -34,7 +39,9 @@ public class MigrationMaker
 
 	private void CriarMigration() throws Exception
 	{
-		String comando = "php artisan make:migration " + this.gerador.ObterNome();
+		String tabela = this.gerador.ObterNome();
+		
+		String comando = String.format("php artisan make:migration %s --create=%s", tabela, tabela.toLowerCase()) ;
 		ArrayList<String> retorno = ArtisanComando.Executar(this.gerador.ObterPath(), comando);
 		if(! retorno.isEmpty())
 		{
@@ -48,16 +55,85 @@ public class MigrationMaker
 			String[] quebras = primeiroElemento.split(":");
 			if(quebras.length != 0)
 			{
-				this.migration = quebras[1];
+				this.migration = quebras[1].trim();
 			}
 		}
 	}
 	
-	private void ModificarMigration() 
+	private void ModificarMigration() throws Exception 
 	{
-		System.out.print("Migration criada: " + this.migration);
+		// Obtem as linhas que vamos adicionar no arquivo de migrations
+		ArrayList<String> linhasParaAdicionar = this.gerador.ObterCamposMigration();
+		
+		// Obtem todas as linhas do arquivo de migration
+		ArrayList<String> linhasArquivo = this.ObterLinhasArquivoMigration();
+		
+		// Posição onde serão inseridos os campos
+		int indexStart = INICIO_CAMPOS;
+		
+		for (String linha : linhasParaAdicionar) 
+		{
+			linhasArquivo.add(indexStart, linha);
+			indexStart++;
+		}
+		
+		// Remover arquivo antigo
+		this.RemoverArquivoMigration();
+		
+		// Criar novo arquivo
+		this.CriarArquivoMigration(linhasArquivo);
+		
 	}
 	
+	private void RemoverArquivoMigration() 
+	{
+		File file = new File(this.ObterArquivoMigration());
+		System.out.println("Removendo arquivo... " + this.ObterArquivoMigration());
+		file.delete();
+	}
+
+	private void CriarArquivoMigration(ArrayList<String> linhasArquivo) throws IOException 
+	{
+		FileWriter writer = new FileWriter(this.ObterArquivoMigration()); 
+		for(String str: linhasArquivo) 
+		{
+			writer.write(str +"\n");
+		}
+		writer.close();
+		System.out.println("Criado arquivo... " + this.ObterArquivoMigration());
+	}
+
+	private ArrayList<String> ObterLinhasArquivoMigration() throws IOException
+	{
+		ArrayList<String> lista = new ArrayList<String>();
+		
+		File file = new File(this.ObterArquivoMigration());
+		BufferedReader reader = new BufferedReader(new FileReader(file));;
+
+		try
+		{
+			reader = new BufferedReader(new FileReader(file));
+	    	String text = null;
+
+	    	while ((text = reader.readLine()) != null) 
+	    	{
+	    		lista.add(text);
+	    	}
+		}
+		finally
+		{
+			reader.close();
+		}
+		
+		return lista;
+	}
+	
+	
+	private String ObterArquivoMigration() 
+	{
+		return this.gerador.ObterPath() + "\\database\\migrations\\" + this.migration + ".php";
+	}
+
 	private void ExecutarMigration() throws IOException 
 	{
 		String comando = "php artisan migrate ";

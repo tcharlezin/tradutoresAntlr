@@ -52,4 +52,17 @@ public class GoLaravel
 		new ViewMaker(this).GerarCodigo();
 		new MenuMaker(this).GerarCodigo();
 	}
+	
+	public ArrayList<String> ObterCamposMigration() throws Exception
+	{
+		ArrayList<String> listaRetorno = new ArrayList<String>();
+		
+		for (Campo campo : this.campos) 
+		{
+			String novoCampo = campo.ObterLinhaMigration();
+			listaRetorno.add(novoCampo);
+		}
+		
+		return listaRetorno;
+	}
 }
