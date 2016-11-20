@@ -21,6 +21,11 @@ public class Campo
 		this.requerido = requerido;
 		this.naoLista = naoLista;
 	}
+	
+	public String ObterNome()
+	{
+		return this.nome;
+	}
 
 	public String ObterLinhaMigration() throws Exception 
 	{

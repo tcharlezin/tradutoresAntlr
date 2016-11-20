@@ -16,7 +16,6 @@ public class RotasMaker
 		{
 			ArrayList<String> linhasArquivo = this.ObterLinhasArquivoRota();
 			
-			linhasArquivo.add("");
 			linhasArquivo.add(String.format("// Adicionando rota para %s", this.gerador.ObterNome()));
 			linhasArquivo.add(ObterLinhaRota());
 			linhasArquivo.add("");

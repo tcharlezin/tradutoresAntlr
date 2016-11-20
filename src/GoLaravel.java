@@ -69,5 +69,18 @@ public class GoLaravel
 		
 		return listaRetorno;
 	}
+
+	public String ObterCamposParaModelFillable() 
+	{
+		String fillable = "";
+		
+		for (Campo campo : campos) 
+		{
+			String nomeCampo = campo.ObterNome();
+			fillable += String.format("'%s',", nomeCampo);
+		}
+		
+		return fillable;
+	}
 	
 }
