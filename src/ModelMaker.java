@@ -9,6 +9,7 @@ public class ModelMaker
 	
 	private static final String MODEL = "%%MODEL%%";
 	private static final String CAMPOS = "%%CAMPOS%%";
+	private static final String TABELA = "%%MODEL_TABELA%%";
 
 	public ModelMaker(GoLaravel gerador) 
 	{
@@ -51,6 +52,12 @@ public class ModelMaker
 			{
 				linha = linha.replace(CAMPOS, this.gerador.ObterCamposParaModelFillable());
 			}
+			
+			if(linha.contains(TABELA))
+			{
+				linha = linha.replace(TABELA, this.gerador.ObterNomeMinusculo());
+			}
+
 			novoLista.add(linha);
 		}
 		

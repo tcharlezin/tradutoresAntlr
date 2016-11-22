@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class %%MODEL%% extends Model
 {
+	protected $table = "%%MODEL_TABELA%%";
+	
     protected $fillable = [
         %%CAMPOS%%
     ];

@@ -63,4 +63,9 @@ public class Campo
 		}
 		
 	}
+
+	public boolean IsApareceListagem() 
+	{
+		return ! this.naoLista;
+	}
 }

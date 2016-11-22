@@ -16,7 +16,7 @@ class %%MODEL%%Controller extends Controller
 
     public function index()
     {
-        $dados = $this->model->listAll();
+        $dados = $this->model->paginate(15);
         return view('%%MODEL_MINUSCULO%%.index', compact('dados'));
     }
 
@@ -47,7 +47,7 @@ class %%MODEL%%Controller extends Controller
         $dadosRequest = $request->all();
         $this->model->update($dadosRequest, $id);
 
-        $dados = $this->model->listAll();
+        $dados = $this->model->paginate(15);
         return view('%%MODEL_MINUSCULO%%.index', compact('dados'));
     }
 

@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 public class GoLaravel 
@@ -83,5 +84,45 @@ public class GoLaravel
 		
 		return fillable;
 	}
+
+	public void CriarDiretorioView() 
+	{
+		File dir = new File(this.ObterNomeDiretorioView());
+		dir.mkdir();
+	}
 	
+	public String ObterNomeDiretorioView() 
+	{
+		return  String.format("%s\\resources\\views\\%s",this.ObterPath(), this.ObterNomeMinusculo());
+	}
+
+	public ArrayList<String> ObterColunasHeaderListagem() 
+	{
+		ArrayList<String> colunas = new ArrayList<String>();
+		
+		for (Campo campo : this.campos) 
+		{
+			if(campo.IsApareceListagem())
+			{
+				colunas.add(String.format("                <th>%s</th>", campo.ObterNome()));
+			}
+		}
+		
+		return colunas;
+	}
+	
+	public ArrayList<String> ObterColunasBodyListagem() 
+	{
+		ArrayList<String> colunas = new ArrayList<String>();
+		
+		for (Campo campo : this.campos) 
+		{
+			if(campo.IsApareceListagem())
+			{
+				colunas.add(String.format("                <td>$dado->%s</td>", campo.ObterNome()));
+			}
+		}
+		
+		return colunas;
+	}
 }
