@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileWriter;
 
 public class MenuMaker 
 {
@@ -10,7 +12,30 @@ public class MenuMaker
 	
 	public void GerarCodigo()
 	{
+		try
+		{
+			File file = new File(this.ObterArquivoMenu());
+			FileWriter fileWriter = new FileWriter(file,true);
+			fileWriter.write(ObterLinhaMenu());
+			fileWriter.close();
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+
+	private String ObterArquivoMenu() 
+	{
+		return this.gerador.ObterPath() + "\\resources\\views\\_menu_topo.blade.php";
+	}
+	
+	private String ObterLinhaMenu()
+	{
+		String nome = this.gerador.ObterNome();
+		String rota = this.gerador.ObterNomeMinusculo();
 		
+		return String.format("<li><a href=\"{{ route('%s.index') }}\">%s</a></li>", rota, nome);
 	}
 
 }

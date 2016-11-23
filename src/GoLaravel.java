@@ -119,10 +119,26 @@ public class GoLaravel
 		{
 			if(campo.IsApareceListagem())
 			{
-				colunas.add(String.format("                <td>$dado->%s</td>", campo.ObterNome()));
+				colunas.add(String.format("                <td>{{ $dado->%s }}</td>", campo.ObterNome()));
 			}
 		}
 		
 		return colunas;
+	}
+
+	public ArrayList<String> ObterCamposForm() throws Exception 
+	{
+		ArrayList<String> listaRetorno = new ArrayList<String>();
+		
+		for (Campo campo : this.campos) 
+		{
+			ArrayList<String> camposForm = campo.ObterCampoForm();
+			for (String linha : camposForm) 
+			{
+				listaRetorno.add(linha + "\n");
+			}
+		}
+		
+		return listaRetorno;
 	}
 }

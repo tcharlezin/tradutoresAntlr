@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Campo 
 {
@@ -61,11 +62,47 @@ public class Campo
 			default:
 				throw new Exception("Tipo de campo não reconhecido: " + this.tipo);
 		}
-		
 	}
 
 	public boolean IsApareceListagem() 
 	{
 		return ! this.naoLista;
+	}
+
+	public ArrayList<String> ObterCampoForm() throws Exception 
+	{
+		ArrayList<String> retorno = new ArrayList<String>();
+	
+		String nomeCampo = this.ObterNome();
+		
+		retorno.add("<div class=\"form-group\">");
+		retorno.add(String.format("{!! Form::label('%s', '%s:') !!}", nomeCampo, nomeCampo));
+		retorno.add(this.ObterTipoParaForm());
+		retorno.add("</div>");
+		retorno.add("\n");
+		
+		return retorno;
+	}
+	
+	public String ObterTipoParaForm() throws Exception
+	{
+		switch (this.tipo) 
+		{
+			case TIPO_STRING:
+				return String.format("{!! Form::text('%s', null, ['class'=>'form-control']) !!}", this.ObterNome());
+			case TIPO_TEXTO:
+				return String.format("{!! Form::textarea('%s', null, ['class'=>'form-control']) !!}", this.ObterNome());
+			case TIPO_INTEIRO:
+				return String.format("{!! Form::number('%s', null, ['class'=>'form-control']) !!}", this.ObterNome());
+			case TIPO_DECIMAL:
+				return String.format("{!! Form::number('%s', null, ['class'=>'form-control']) !!}", this.ObterNome());
+			case TIPO_DATE:
+				return String.format("{!! Form::date('%s', null, ['class'=>'form-control']) !!}", this.ObterNome());
+			case TIPO_BOOLEAN:
+				return String.format("{!! Form::checkbox('%s', null, ['class'=>'form-control']) !!}", this.ObterNome());
+
+			default:
+				throw new Exception("Tipo de campo não reconhecido: " + this.tipo);
+		}
 	}
 }

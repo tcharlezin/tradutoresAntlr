@@ -45,7 +45,10 @@ class %%MODEL%%Controller extends Controller
     public function update(Request $request, $id)
     {
         $dadosRequest = $request->all();
-        $this->model->update($dadosRequest, $id);
+
+        $obj = $this->model->find($id);
+        $obj->update($dadosRequest);
+        $obj->save();
 
         $dados = $this->model->paginate(15);
         return view('%%MODEL_MINUSCULO%%.index', compact('dados'));

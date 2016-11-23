@@ -14,24 +14,24 @@ public class ViewMakerForm
 	
 	public void Executar() throws IOException
 	{
-		ArrayList<String> linhasArquivo = this.ObterLinhasArquivoFormView();
-		ArrayList<String> linhasNovoArquivo = this.ModificarArquivoFormView(linhasArquivo);
-		SalvarArquivoFormView(linhasNovoArquivo);
+		try
+		{
+			ArrayList<String> linhasArquivo = this.gerador.ObterCamposForm();
+			this.SalvarArquivoFormView(linhasArquivo);
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	private void SalvarArquivoFormView(ArrayList<String> linhasNovoArquivo) throws IOException 
+	{
+		Utilitario.CriarArquivo(linhasNovoArquivo, this.ObterArquivoFormView());
 	}
 	
-	private ArrayList<String> ObterLinhasArquivoFormView() throws IOException 
+	private String ObterArquivoFormView()
 	{
-		Path currentRelativePath = Paths.get("");
-		String arquivo = currentRelativePath.toAbsolutePath() + "\\src\\view\\_form.blade.php";
-		return Utilitario.ObterLinhasArquivo(arquivo);
-	}
-
-	private ArrayList<String> ModificarArquivoFormView(ArrayList<String> linhasArquivo) 
-	{
-		return null;
-	}
-
-	private void SalvarArquivoFormView(ArrayList<String> linhasNovoArquivo) 
-	{
+		return this.gerador.ObterNomeDiretorioView() + "\\_form.blade.php";
 	}
 }
