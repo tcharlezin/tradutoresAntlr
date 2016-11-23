@@ -6,6 +6,7 @@ public class Campo
 	private String tipo;
 	private boolean requerido;
 	private boolean naoLista;
+	private String valorDefault;
 	
 	public static final String TIPO_STRING = "string";
 	public static final String TIPO_TEXTO = "texto";
@@ -23,6 +24,11 @@ public class Campo
 		this.naoLista = naoLista;
 	}
 	
+	public void DefinirValorDefault(String valorDefault)
+	{
+		this.valorDefault = valorDefault;
+	}
+	
 	public String ObterNome()
 	{
 		return this.nome;
@@ -35,6 +41,11 @@ public class Campo
 		if(! this.requerido)
 		{
 			campo += "->nullable()";
+		}
+		
+		if( this.valorDefault != null)
+		{
+			campo += String.format("->default(%s)", this.valorDefault);
 		}
 		
 		return campo + ";";
@@ -57,7 +68,7 @@ public class Campo
 			case TIPO_DATE:
 				return String.format("%s$table->%s('%s')", ESPACOS_INICIO, "date", nomeColuna);
 			case TIPO_BOOLEAN:
-				return String.format("%s$table->%s('%s')", ESPACOS_INICIO, "bool", nomeColuna);
+				return String.format("%s$table->%s('%s')", ESPACOS_INICIO, "boolean", nomeColuna);
 
 			default:
 				throw new Exception("Tipo de campo não reconhecido: " + this.tipo);

@@ -50,13 +50,12 @@ public class GoLaravel
 	
 	public void Executar()
 	{
-		new MigrationMaker(this).GerarCodigo(); // OK
-		new RotasMaker(this).GerarCodigo(); // OK
-		new ControllerMaker(this).GerarCodigo(); // OK
-		new ModelMaker(this).GerarCodigo(); // OK
+		new MigrationMaker(this).GerarCodigo();
+		new RotasMaker(this).GerarCodigo();
+		new ControllerMaker(this).GerarCodigo();
+		new ModelMaker(this).GerarCodigo();
 		new ViewMaker(this).GerarCodigo();
 		new MenuMaker(this).GerarCodigo();
-		// REQUEST
 	}
 	
 	public ArrayList<String> ObterCamposMigration() throws Exception

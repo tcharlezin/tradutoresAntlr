@@ -22,6 +22,8 @@ public class RotasMaker
 			
 			Utilitario.RemoverArquivo(this.ObterArquivoRota());
 			Utilitario.CriarArquivo(linhasArquivo, this.ObterArquivoRota());
+			
+			System.out.println("Rota criada com sucesso!");
 		} 
 		catch (Exception e) 
 		{

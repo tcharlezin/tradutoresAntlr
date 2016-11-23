@@ -15,13 +15,19 @@ public class ArtisanComando
 	        builder.redirectErrorStream(true);
 	        Process p = builder.start();
 	        BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-	        String line;
+	        
+	        System.out.println(String.format("---------------"));
+            System.out.println(String.format("Comando: %s", executar));
+            
+            String line;
 	        while (true) 
 	        {
 	            line = r.readLine();
+	            System.out.println(String.format("SAÍDA: %s", line));
 	            if (line == null) { break; }
 	            lista.add(line);
 	        }
+	        System.out.println(String.format("---------------"));
 	        
 	    return lista;
 	}

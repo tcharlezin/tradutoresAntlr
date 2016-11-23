@@ -18,6 +18,8 @@ public class ViewMaker
 			this.CriarCreate();
 			this.CriarForm();
 			this.CriarIndex();
+			
+			System.out.println("View criada com sucesso!");
 		}
 		catch(Exception ex)
 		{

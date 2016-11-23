@@ -23,6 +23,8 @@ public class ControllerMaker
 			ArrayList<String> linhasArquivo = this.ObterLinhasArquivoExemploController();
 			ArrayList<String> linhasNovoArquivo = this.ModificarArquivo(linhasArquivo);
 			SalvarArquivoController(linhasNovoArquivo);
+			
+			System.out.println("Controller criada com sucesso!");
 		} 
 		catch (Exception e) 
 		{

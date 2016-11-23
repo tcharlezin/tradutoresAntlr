@@ -23,6 +23,8 @@ public class ModelMaker
 			ArrayList<String> linhasArquivo = this.ObterLinhasArquivoExemploModel();
 			ArrayList<String> linhasNovoArquivo = this.ModificarArquivo(linhasArquivo);
 			SalvarArquivoModel(linhasNovoArquivo);
+			
+			System.out.println("Model criada com sucesso!");
 		} 
 		catch (Exception e) 
 		{

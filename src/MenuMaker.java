@@ -18,6 +18,8 @@ public class MenuMaker
 			FileWriter fileWriter = new FileWriter(file,true);
 			fileWriter.write(ObterLinhaMenu());
 			fileWriter.close();
+			
+			System.out.println("Menu criado com sucesso!");
 		} 
 		catch (Exception e) 
 		{

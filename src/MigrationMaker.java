@@ -20,6 +20,7 @@ public class MigrationMaker
 			this.CriarMigration();
 			this.ModificarMigration();
 			this.ExecutarMigration();
+			System.out.println("Migration criada com sucesso!");
 		} 
 		catch (Exception e) 
 		{
