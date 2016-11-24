@@ -1,0 +1,7 @@
+PASTA_APLICACAO = 'C:\Users\Seven\Projetos\Tradutores\tradutor';
+
+CRIAR CRUD ['Pessoas'] 
+{
+    NOME_CAMPO['nome'] +TIPO_CAMPO['string']+ REQUERIDO ;
+    NOME_CAMPO['idade'] +TIPO_CAMPO['inteiro']+ REQUERIDO + NAO_LISTA;
+}

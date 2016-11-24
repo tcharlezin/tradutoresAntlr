@@ -16,6 +16,10 @@ public class Campo
 	public static final String TIPO_BOOLEAN = "boolean";
 	public static final String ESPACOS_INICIO = "            ";
 	
+	public Campo()
+	{
+	}
+			
 	public Campo(String nome, String tipo, boolean requerido, boolean naoLista)
 	{
 		this.nome = nome;
@@ -24,9 +28,29 @@ public class Campo
 		this.naoLista = naoLista;
 	}
 	
+	public void DefinirNome(String nome)
+	{
+		this.nome = nome;
+	}
+	
+	public void DefinirTipo(String tipo)
+	{
+		this.tipo = tipo;
+	}
+	
 	public void DefinirValorDefault(String valorDefault)
 	{
 		this.valorDefault = valorDefault;
+	}
+	
+	public void DefinirRequerido(boolean parametro)
+	{
+		this.requerido = parametro;
+	}
+	
+	public void DefinirNaoLista(boolean parametro)
+	{
+		this.naoLista = parametro;
 	}
 	
 	public String ObterNome()
