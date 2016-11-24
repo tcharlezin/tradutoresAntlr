@@ -1,0 +1,13 @@
+PASTA_APLICACAO = 'C:\Users\Seven\Projetos\Tradutores\tradutor';
+
+CRIAR CRUD ['Pessoa'] 
+{
+    NOME_CAMPO['nome'] +TIPO_CAMPO['string']+ REQUERIDO ;
+    NOME_CAMPO['sobrenome'] +TIPO_CAMPO['string']+ REQUERIDO ;
+    NOME_CAMPO['data_nascimento'] +TIPO_CAMPO['data']+ REQUERIDO + NAO_LISTA;
+    NOME_CAMPO['idade'] +TIPO_CAMPO['inteiro'] + NAO_LISTA;
+    NOME_CAMPO['email'] +TIPO_CAMPO['string']+ REQUERIDO ;
+    NOME_CAMPO['peso'] +TIPO_CAMPO['decimal'] + NAO_LISTA;
+    NOME_CAMPO['gremista'] +TIPO_CAMPO['boolean'] + DEFAULT['1'];
+    NOME_CAMPO['descricao'] +TIPO_CAMPO['texto'] + NAO_LISTA ;
+}

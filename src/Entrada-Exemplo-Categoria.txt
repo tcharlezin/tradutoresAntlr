@@ -1,0 +1,8 @@
+PASTA_APLICACAO = 'C:\Users\Seven\Projetos\Tradutores\tradutor';
+
+CRIAR CRUD ['Categoria'] 
+{
+    NOME_CAMPO['codigo'] +TIPO_CAMPO['inteiro']+ REQUERIDO ;
+    NOME_CAMPO['descricao'] +TIPO_CAMPO['string']+ REQUERIDO;
+    NOME_CAMPO['ativo'] +TIPO_CAMPO['boolean']+ REQUERIDO;
+}

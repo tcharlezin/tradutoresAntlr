@@ -23,8 +23,11 @@ public class ArtisanComando
 	        while (true) 
 	        {
 	            line = r.readLine();
+	            if (line == null) 
+	            { 
+	            	break; 
+            	}
 	            System.out.println(String.format("SAÍDA: %s", line));
-	            if (line == null) { break; }
 	            lista.add(line);
 	        }
 	        System.out.println(String.format("---------------"));

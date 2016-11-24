@@ -16,7 +16,9 @@ public class Principal
 		{
 			Path currentRelativePath = Paths.get("");
 			
-	        String inputFile = currentRelativePath.toAbsolutePath() + "\\src\\ExemploEntrada1.txt";
+	        //String inputFile = currentRelativePath.toAbsolutePath() + "\\src\\Entrada-Exemplo-Pessoa.txt";
+	        String inputFile = currentRelativePath.toAbsolutePath() + "\\src\\Entrada-Exemplo-Categoria.txt";
+	        
 	        if ( args.length>0 ) 
 	        {
 	        	// inputFile = args[0]; ARQUIVO DE ENTRADA

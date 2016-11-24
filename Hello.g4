@@ -24,6 +24,6 @@ nao_lista :  '+ NAO_LISTA' | ;
 padrao :  '+ DEFAULT[\'' valor_default '\']' | ;
 valor_default : VALOR ;
 
-VALOR : [0-9a-zA-Z:\\]+ ; // Aqui vai ter que permitir numeros
+VALOR : [0-9a-zA-Z:\\_]+ ; // Aqui vai ter que permitir numeros
 
 WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip ;
